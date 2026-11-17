@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Live product catalogue powered by a REST API">
+<title>Live Catalogue | Enterprise Accessible Dashboard</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<link rel="stylesheet" href="../css/accessibility.css">
+<link rel="stylesheet" href="../css/api-client.css">
+</head>
+<body data-root="../">
+<a class="skip-link" href="#main">Skip to main content</a>
+<div data-include="header"></div>
+<div class="layout">
+<div data-include="sidebar"></div>
+<main id="main" tabindex="-1">
+<header class="catalogue-heading">
+  <div><p class="eyebrow">LIVE REST API</p><h1>Product catalogue</h1><p>Browse live products, search instantly and sort results without reloading the page.</p></div>
+  <button type="button" class="btn" id="refresh-products">Refresh data</button>
+</header>
+<section class="catalogue-summary" aria-label="Catalogue summary">
+  <article class="card"><h2>Products found</h2><p class="num" id="product-count">—</p></article>
+  <article class="card"><h2>Cart items</h2><p class="num" id="cart-count">0</p></article>
+  <article class="card"><h2>Data source</h2><p class="source-label">FakeStore API</p></article>
+</section>
+<section aria-labelledby="browse-heading" class="catalogue-controls">
+  <h2 id="browse-heading">Browse products</h2>
+  <div class="catalogue-filters">
+    <p class="search-field"><label for="product-search">Search products</label><input id="product-search" type="search" placeholder="Search by product name..."></p>
+    <p><label for="product-sort">Sort by</label><select id="product-sort"><option value="default">Recommended</option><option value="name-asc">Name: A to Z</option><option value="price-asc">Price: Low to high</option><option value="price-desc">Price: High to low</option><option value="rating-desc">Highest rated</option></select></p>
+  </div>
+  <div id="category-tabs" class="category-tabs" role="group" aria-label="Filter by category">
+    <button type="button" class="category-tab active" data-category="all" aria-pressed="true">All products</button>
+  </div>
+  <p id="api-status" class="api-status" role="status" aria-live="polite">Preparing catalogue…</p>
+  <div id="api-error" class="api-error" role="alert" hidden></div>
+  <div id="product-loading" class="product-grid" aria-label="Loading products">
+    <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+  </div>
+  <div id="product-grid" class="product-grid" aria-live="polite"></div>
+  <p id="empty-state" class="empty-state" hidden>No products match your search. Try another keyword or category.</p>
+</section>
+</main>
+</div>
+<div data-include="footer"></div>
+<script src="../js/main.js"></script>
+<script src="../js/navigation.js"></script>
+<script src="../js/modal.js"></script>
+<script src="../js/api.js"></script>
+</body>
+</html>
